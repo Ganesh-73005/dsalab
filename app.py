@@ -6,7 +6,7 @@ import pandas as pd
 app = Flask(__name__)
 
 # Load the model (for .pkl file)
-with open('model.pkl', 'rb') as f:
+with open('best_random_forest_model.pkl', 'rb') as f:
     model = pickle.load(f)
 
 # Preprocessing function
