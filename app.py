@@ -1,17 +1,17 @@
 # app.py
 from flask import Flask, request, jsonify
-import joblib
+import pickle
 import pandas as pd
 
 app = Flask(__name__)
 
-# Load the model
-model = joblib.load('model.joblib')
+# Load the model (for .pkl file)
+with open('model.pkl', 'rb') as f:
+    model = pickle.load(f)
 
-# Preprocessing function (optional if needed)
+# Preprocessing function
 def preprocess(data):
     df = pd.DataFrame([data])
-    # Map categorical values if needed
     df['Gender'] = df['Gender'].map({'Female': 0, 'Male': 1})
     df['Geography'] = df['Geography'].map({'France': 0, 'Spain': 1, 'Germany': 2})
     return df
